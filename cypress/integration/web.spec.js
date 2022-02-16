@@ -1,14 +1,7 @@
-/*describe('Visit test', () => {
-    it('visits', () => {
+  describe('Navigate from home page to driver page', () => {
+    it('clicks the link "drivers"', () => {
       cy.visit('https://formula1stats.herokuapp.com/')
-  
-    })
-  })*/
-
-  describe('My First Test', () => {
-    it('clicks the link "seasons"', () => {
-      cy.visit('https://formula1stats.herokuapp.com/')
-  
-      cy.contains('drivers').click()
+      
+      cy.get('#menu-items-container').contains('Drivers').click()
     })
   })
