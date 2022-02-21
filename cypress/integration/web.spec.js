@@ -6,9 +6,26 @@
       
       cy.get('#menu-items-container').contains('Drivers').click()
 
-      cy.get('#driver-column').click().contains('Mika Häkkinen').click()
+      cy.get('#driver-column').click().contains('Häkkinen').click()
 
       cy.get('#menu-items-container').contains('Home').click()
+
+    })
+  })
+
+    //Driver-test
+
+  describe('Change driver, then year on the driver-graph', () => {
+    it('clicks the link "drivers"', () => {
+      cy.visit('https://formula1stats.herokuapp.com/drivers')
+      
+      cy.get('#menu-items-container').contains('Drivers').click()
+
+      cy.get('#driver-column').click().contains('Hailwood').click()
+
+      cy.get('#year-dropdown-2').click().contains('1972').click()
+      cy.get('#year-dropdown-2').click().contains('1965').click()
+
 
     })
   })
@@ -59,3 +76,4 @@
 
     })
   })*/
+
