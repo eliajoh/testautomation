@@ -1,7 +1,7 @@
   
     //Driver-test
   describe('Navigate from home page to driver page, change driver and navigate away and back again', () => {
-    it('clicks the link "drivers"', () => {
+    it('clicks the link "drivers" in the menu and then picks Mika häkkinen before returning to homepage', () => {
       cy.visit('https://formula1stats.herokuapp.com/')
       
       cy.get('#menu-items-container').contains('Drivers').click()
@@ -15,7 +15,7 @@
 
     //Driver-test 2
   describe('Change driver, then year on the driver-graph', () => {
-    it('clicks the link "drivers"', () => {
+    it('changes the driver to Mike Hailwood, then changes the years on the graph', () => {
       cy.visit('https://formula1stats.herokuapp.com/drivers')
       
       cy.get('#driver-column').click().contains('Hailwood').click()
@@ -29,7 +29,7 @@
 
   //Driver-test 3
   describe('Filter driver-result after year', () => {
-    it('clicks the link "drivers"', () => {
+    it('filters the table after year 2008', () => {
       cy.visit('https://formula1stats.herokuapp.com/drivers')
       
       cy.get('.column-1 > input').click()
@@ -49,9 +49,9 @@
     })
   })
 
-    //Constructor-test
+    //Constructor-test 1
   describe('Change year of constructors and navigate away and back', () => {
-    it('clicks the link "Constructors"', () => {
+    it('changes the competition-season twice, returns home, picks new season', () => {
       cy.visit('https://formula1stats.herokuapp.com/constructors')
       
       cy.get('#constructor-year-column').click().contains('2016').click()
