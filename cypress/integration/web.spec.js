@@ -13,20 +13,39 @@
     })
   })
 
-    //Driver-test
-
+    //Driver-test 2
   describe('Change driver, then year on the driver-graph', () => {
     it('clicks the link "drivers"', () => {
       cy.visit('https://formula1stats.herokuapp.com/drivers')
       
-      cy.get('#menu-items-container').contains('Drivers').click()
-
       cy.get('#driver-column').click().contains('Hailwood').click()
 
       cy.get('#year-dropdown-2').click().contains('1972').click()
       cy.get('#year-dropdown-2').click().contains('1965').click()
 
 
+    })
+  })
+
+  //Driver-test 3
+  describe('Filter driver-result after year', () => {
+    it('clicks the link "drivers"', () => {
+      cy.visit('https://formula1stats.herokuapp.com/drivers')
+      
+      cy.get('.column-1 > input').click()
+      .type('2008{enter}')
+      
+    })
+  })
+
+  //Driver-test 4
+  describe('Filter driver-result after year where driver did not compete', () => {
+    it('clicks the link "drivers"', () => {
+      cy.visit('https://formula1stats.herokuapp.com/drivers')
+      
+      cy.get('.column-1 > input').click()
+      .type('2000{enter}')
+      
     })
   })
 
@@ -48,6 +67,7 @@
     })
   })
 
+  /*
     //Second Constructor-test
   describe('Remove constructors, change year and remove more constructors', () => {
     it('clicks the link "Constructors"', () => {
@@ -63,9 +83,7 @@
     })
   })
 
-
     //Seasons-tests
-/*
   describe('Navigate from home page to Seasons page', () => {
     it('clicks the link "seasons"', () => {
       cy.visit('https://formula1stats.herokuapp.com/')
