@@ -50,19 +50,18 @@
   })
 
     //Constructor-test 1
-  describe('Change year of constructors and navigate away and back', () => {
-    it('changes the competition-season twice, returns home, picks new season', () => {
+  describe('Change year of constructors and removes as many teams as possible', () => {
+    it('changes the competition-season, removes all teams, changes season again', () => {
       cy.visit('https://formula1stats.herokuapp.com/constructors')
+
+      cy.get('.Select-value').click()
+      .type('1999{enter}')
+
+      cy.get('.legendtoggle').click({multiple:true})
+
+      cy.get('.Select-value').click()
+      .type('1973{enter}')
       
-      cy.get('#constructor-year-column').click().contains('2016').click()
-
-      cy.get('#constructor-year-column').click().contains('2018').click()
-
-      cy.get('#menu-items-container').contains('Home').click()
-
-      cy.get('#menu-items-container').contains('Constructors').click()
-
-      cy.get('#constructor-year-column').click().contains('2015').click()
 
     })
   })
