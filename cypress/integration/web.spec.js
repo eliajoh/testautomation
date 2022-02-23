@@ -59,8 +59,7 @@
 
       cy.get('.legendtoggle').click({multiple:true})
 
-      cy.get('.Select-value').click()
-      .type('1973{enter}')
+      cy.get('g.traces:nth-child(2) > rect:nth-child(3)').click()
       
 
     })
