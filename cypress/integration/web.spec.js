@@ -1,4 +1,4 @@
-  
+
     //Driver-test
   describe('Navigate from home page to driver page, change driver and navigate away and back again', () => {
     it('clicks the link "drivers" in the menu and then picks Mika häkkinen before returning to homepage', () => {
@@ -15,13 +15,14 @@
 
     //Driver-test 2
   describe('Change driver, then year on the driver-graph', () => {
-    it('changes the driver to Mike Hailwood, then changes the years on the graph', () => {
+    it('changes the driver to Schumacher, then changes the year on the graph to 2000', () => {
       cy.visit('https://formula1stats.herokuapp.com/drivers')
       
-      cy.get('#driver-column').click().contains('Hailwood').click()
+      cy.get('#react-select-2--value-item').click()
+      .type('Schumacher{enter}')
 
-      cy.get('#year-dropdown-2').click().contains('1972').click()
-      cy.get('#year-dropdown-2').click().contains('1965').click()
+      cy.get('#year-dropdown-2').click().
+      type('2000{enter}')
 
 
     })
