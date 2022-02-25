@@ -8,12 +8,13 @@
       cy.url().should('include', '/drivers')
 
       cy.get('#driver-column').click().contains('Häkkinen').click()
+      cy.get('#driver-column').should('contain', 'Häkkinen')
 
       cy.get('#menu-items-container').contains('Home').click()
 
     })
   })
-/*
+
     //Driver-test 2
   describe('Change driver, then year on the driver-graph', () => {
     it('changes the driver to Schumacher, then changes the year on the graph to 2000', () => {
@@ -21,9 +22,11 @@
       
       cy.get('#react-select-2--value-item').click()
       .type('Schumacher{enter}')
+      cy.get('#react-select-2--value-item').should('contain', 'Schumacher')
 
       cy.get('#year-dropdown-2').click().
       type('2000{enter}')
+      cy.get('#year-dropdown-2').should('contain', '2000')
 
 
     })
@@ -37,6 +40,7 @@
       
       cy.get('.column-1 > input').click()
       .type('2008{enter}')
+      cy.get('.column-1 > input').should('contain', '2008')
       
     })
   })
@@ -52,8 +56,8 @@
       cy.get('.column-1 > input').should('contain', '2000')
       
     })
-  })*/
-/*
+  })
+
     //Constructor-test 1
   describe('Change year of constructors and removes as many teams as possible', () => {
     it('changes the competition-season, removes all teams, changes season again', () => {
