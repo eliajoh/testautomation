@@ -5,6 +5,7 @@
       cy.visit('https://formula1stats.herokuapp.com/')
       
       cy.get('#menu-items-container').contains('Drivers').click()
+      cy.url().should('include', '/drivers')
 
       cy.get('#driver-column').click().contains('Häkkinen').click()
 
@@ -12,7 +13,7 @@
 
     })
   })
-
+/*
     //Driver-test 2
   describe('Change driver, then year on the driver-graph', () => {
     it('changes the driver to Schumacher, then changes the year on the graph to 2000', () => {
@@ -32,6 +33,7 @@
   describe('Filter driver-result after year', () => {
     it('filters the table after year 2008', () => {
       cy.visit('https://formula1stats.herokuapp.com/drivers')
+      cy.url().should('include', '/drivers')
       
       cy.get('.column-1 > input').click()
       .type('2008{enter}')
@@ -43,20 +45,24 @@
   describe('Filter driver-result after year where driver did not compete', () => {
     it('clicks the link "drivers"', () => {
       cy.visit('https://formula1stats.herokuapp.com/drivers')
+      cy.url().should('include', '/drivers')
       
       cy.get('.column-1 > input').click()
       .type('2000{enter}')
+      cy.get('.column-1 > input').should('contain', '2000')
       
     })
-  })
-
+  })*/
+/*
     //Constructor-test 1
   describe('Change year of constructors and removes as many teams as possible', () => {
     it('changes the competition-season, removes all teams, changes season again', () => {
       cy.visit('https://formula1stats.herokuapp.com/constructors')
+      cy.url().should('include', '/constructors')
 
       cy.get('.Select-value').click()
       .type('1999{enter}')
+      cy.get('.Select-value').should('contain', '1999')
 
       cy.get('.legendtoggle').click({multiple:true})
 
