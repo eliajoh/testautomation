@@ -40,7 +40,7 @@
       
       cy.get('.column-1 > input').click()
       .type('2008{enter}')
-      cy.get('.column-1 > input').should('contain', '2008')
+      cy.get('.column-1').should('contain', '2008')
       
     })
   })
@@ -53,7 +53,7 @@
       
       cy.get('.column-1 > input').click()
       .type('2000{enter}')
-      cy.get('.column-1 > input').should('contain', '2000')
+      cy.get('.column-1').should('contain', '2000')
       
     })
   })
