@@ -44,7 +44,7 @@
       
     })
   })
-
+/*
   //Driver-test 4
   describe('Filter driver-result after year where driver did not compete', () => {
     it('clicks the link "drivers"', () => {
@@ -56,7 +56,7 @@
       cy.get('.column-1').should('contain', '2000')
       
     })
-  })
+  })*/
 
     //Constructor-test 1
   describe('Change year of constructors and removes as many teams as possible', () => {
@@ -76,31 +76,22 @@
     })
   })
 
-  /*
-    //Second Constructor-test
-  describe('Remove constructors, change year and remove more constructors', () => {
-    it('clicks the link "Constructors"', () => {
-      cy.visit('https://formula1stats.herokuapp.com/constructors')
-      
-      cy.get('#menu-items-container').contains('Constructors').click()
-
-
-        //klicka bort konstruktörer. byt år, klicka bort konstruktörer
-
-      
-
-    })
-  })
-
+  
     //Seasons-tests
   describe('Navigate from home page to Seasons page', () => {
     it('clicks the link "seasons"', () => {
       cy.visit('https://formula1stats.herokuapp.com/')
       
       cy.get('#menu-items-container').contains('Seasons').click()
-
-
+      cy.url().should('include', '/seasons')
+      cy.get('#react-select-2--value > .Select-value').click()
+      .type('1977{enter}')
+      cy.get('#react-select-2--value > .Select-value').should('contain', '1977')
+      cy.wait(4000)
+      cy.get(':nth-child(6) > .Select-value-icon').click()
+      cy.get('#react-select-3--value')
+      .type('Gunnar Nilsson{enter}')
 
     })
-  })*/
+  })
 
