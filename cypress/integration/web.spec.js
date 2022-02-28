@@ -44,19 +44,22 @@
       
     })
   })
-/*
+
   //Driver-test 4
   describe('Filter driver-result after year where driver did not compete', () => {
     it('clicks the link "drivers"', () => {
       cy.visit('https://formula1stats.herokuapp.com/drivers')
       cy.url().should('include', '/drivers')
       
-      cy.get('.column-1 > input').click()
-      .type('2000{enter}')
-      cy.get('.column-1').should('contain', '2000')
+      cy.get('.column-0 > input').click()
+      .type('Monaco{enter}')
+      cy.get('.column-0').should('contain', 'Monaco')
+      cy.get('.column-2 > input').click()
+      .type('1{enter}')
+      cy.get('.column-2').should('contain', '1')
       
     })
-  })*/
+  })
 
     //Constructor-test 1
   describe('Change year of constructors and removes as many teams as possible', () => {
@@ -79,7 +82,7 @@
   
     //Seasons-tests
   describe('Navigate from home page to Seasons page', () => {
-    it('clicks the link "seasons"', () => {
+    it('clicks the link "seasons", changes year to 1977, removes last entry, adds new entry', () => {
       cy.visit('https://formula1stats.herokuapp.com/')
       
       cy.get('#menu-items-container').contains('Seasons').click()
@@ -94,4 +97,3 @@
 
     })
   })
-
