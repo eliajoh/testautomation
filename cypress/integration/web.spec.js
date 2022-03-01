@@ -1,4 +1,4 @@
-
+/*
     //Driver-test
   describe('Navigate from home page to driver page, change driver and navigate away and back again', () => {
     it('clicks the link "drivers" in the menu and then picks Mika häkkinen before returning to homepage', () => {
@@ -54,6 +54,7 @@
       cy.get('.column-0 > input').click()
       .type('Monaco{enter}')
       cy.get('.column-0').should('contain', 'Monaco')
+      //every filter split into multiple tests, then one test which tests all the functions
       cy.get('.column-2 > input').click()
       .type('1{enter}')
       cy.get('.column-2').should('contain', '1')
@@ -97,3 +98,22 @@
 
     })
   })
+*/
+  //Seasons-test 2
+  describe('Change season to edgecases', () => {
+    it('changes season to edgecases 1950 and 2020', () => {
+      cy.visit('https://formula1stats.herokuapp.com/seasons')
+      cy.url().should('include', '/seasons')
+
+      cy.get('#react-select-2--value > .Select-value').click()
+      .type('1950{enter}')
+      cy.get('#react-select-2--value > .Select-value').should('contain', '1950')
+      cy.wait(8000)
+      
+      cy.get('#react-select-2--value > .Select-value').click()
+      .type('2020{enter}')
+      cy.get('#react-select-2--value > .Select-value').should('contain', '2020')
+
+    })
+  })
+
