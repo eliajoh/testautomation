@@ -1,4 +1,4 @@
-/*
+
     //Driver-test
   describe('Navigate from home page to driver page, change driver and navigate away and back again', () => {
     it('clicks the link "drivers" in the menu and then picks Mika häkkinen before returning to homepage', () => {
@@ -95,7 +95,7 @@
       
       cy.get('#menu-items-container').contains('Seasons').click()
       cy.url().should('include', '/seasons')
-      
+
       cy.get('#react-select-2--value > .Select-value').click()
         .type('1977{enter}')
       cy.get('#react-select-2--value > .Select-value')
@@ -106,25 +106,28 @@
         .type('Gunnar Nilsson{enter}')
 
     })
-  })*/
+  })
 
+  
   //Seasons-test 2
   describe('Change season to edgecases', () => {
     it('changes season to edgecases 1950 and 2020', () => {
       cy.visit('/seasons')
       cy.url().should('include', '/seasons')
-
+  
       cy.get('#react-select-2--value > .Select-value').click()
         .type('1950{enter}')
       cy.get('#react-select-2--value > .Select-value')
         .should('contain', '1950')
-      //cy.wait()
-      
-      cy.get('#react-select-2--value > .Select-value').click()
-        .type('2020{enter}')
-      cy.get('#react-select-2--value > .Select-value')
-        .should('contain', '2020')
-
+        cy.get('#react-select-3--value')
+        .contains(
+            'Farina',
+            {timeout: 10000}
+        )
+        .then(() => {
+          cy.get('#react-select-2--value > .Select-value').click()
+          .type('2020{enter}')
+          cy.get('#react-select-2--value > .Select-value').should('contain', '2020')
+      })   
     })
   })
-
