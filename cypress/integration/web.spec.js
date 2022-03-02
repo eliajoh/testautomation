@@ -1,4 +1,4 @@
-
+/*
     //Driver-test
   describe('Navigate from home page to driver page, change driver and navigate away and back again', () => {
     it('clicks the link "drivers" in the menu and then picks Mika häkkinen before returning to homepage', () => {
@@ -7,10 +7,13 @@
       cy.get('#menu-items-container').contains('Drivers').click()
       cy.url().should('include', '/drivers')
 
-      cy.get('#driver-column').click().contains('Häkkinen').click()
-      cy.get('#driver-column').should('contain', 'Häkkinen')
+      cy.get('#driver-column').click()
+        .contains('Häkkinen').click()
+      cy.get('#driver-column')
+        .should('contain', 'Häkkinen')
 
-      cy.get('#menu-items-container').contains('Home').click()
+      cy.get('#menu-items-container')
+        .contains('Home').click()
 
     })
   })
@@ -21,12 +24,13 @@
       cy.visit('/drivers')
       
       cy.get('#react-select-2--value-item').click()
-      .type('Schumacher{enter}')
+        .type('Schumacher{enter}')
       cy.get('#react-select-2--value-item').should('contain', 'Schumacher')
 
-      cy.get('#year-dropdown-2').click().
-      type('2000{enter}')
-      cy.get('#year-dropdown-2').should('contain', '2000')
+      cy.get('#year-dropdown-2').click()
+        .type('2000{enter}')
+      cy.get('#year-dropdown-2')
+        .should('contain', '2000')
 
 
     })
@@ -39,8 +43,9 @@
       cy.url().should('include', '/drivers')
       
       cy.get('.column-1 > input').click()
-      .type('2008{enter}')
-      cy.get('.column-1').should('contain', '2008')
+        .type('2008{enter}')
+      cy.get('.column-1')
+        .should('contain', '2008')
       
     })
   })
@@ -52,12 +57,14 @@
       cy.url().should('include', '/drivers')
       
       cy.get('.column-0 > input').click()
-      .type('Monaco{enter}')
-      cy.get('.column-0').should('contain', 'Monaco')
+        .type('Monaco{enter}')
+      cy.get('.column-0')
+        .should('contain', 'Monaco')
       //every filter split into multiple tests, then one test which tests all the functions
       cy.get('.column-2 > input').click()
-      .type('1{enter}')
-      cy.get('.column-2').should('contain', '1')
+        .type('1{enter}')
+      cy.get('.column-2')
+        .should('contain', '1')
       
     })
   })
@@ -69,7 +76,7 @@
       cy.url().should('include', '/constructors')
 
       cy.get('.Select-value').click()
-      .type('1999{enter}')
+        .type('1999{enter}')
       cy.get('.Select-value').should('contain', '1999')
 
       cy.get('.legendtoggle').click({multiple:true})
@@ -88,16 +95,18 @@
       
       cy.get('#menu-items-container').contains('Seasons').click()
       cy.url().should('include', '/seasons')
+      
       cy.get('#react-select-2--value > .Select-value').click()
-      .type('1977{enter}')
-      cy.get('#react-select-2--value > .Select-value').should('contain', '1977')
+        .type('1977{enter}')
+      cy.get('#react-select-2--value > .Select-value')
+        .should('contain', '1977')
       cy.wait(4000)
       cy.get(':nth-child(6) > .Select-value-icon').click()
       cy.get('#react-select-3--value')
-      .type('Gunnar Nilsson{enter}')
+        .type('Gunnar Nilsson{enter}')
 
     })
-  })
+  })*/
 
   //Seasons-test 2
   describe('Change season to edgecases', () => {
@@ -106,13 +115,15 @@
       cy.url().should('include', '/seasons')
 
       cy.get('#react-select-2--value > .Select-value').click()
-      .type('1950{enter}')
-      cy.get('#react-select-2--value > .Select-value').should('contain', '1950')
-      cy.wait(8000)
+        .type('1950{enter}')
+      cy.get('#react-select-2--value > .Select-value')
+        .should('contain', '1950')
+      //cy.wait()
       
       cy.get('#react-select-2--value > .Select-value').click()
-      .type('2020{enter}')
-      cy.get('#react-select-2--value > .Select-value').should('contain', '2020')
+        .type('2020{enter}')
+      cy.get('#react-select-2--value > .Select-value')
+        .should('contain', '2020')
 
     })
   })
