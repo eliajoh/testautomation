@@ -1,4 +1,28 @@
 
+//Basic Functionality/smoketest
+describe('Navigate from home page to all the other pages to check basic functionality', () => {
+  it('clicks the different linked items in the menu and navigates to all the options', () => {
+    cy.visit('https://formula1stats.herokuapp.com/')
+    
+    cy.get('#menu-items-container').contains('Seasons').click()
+    cy.url().should('include', '/seasons')
+
+    cy.get('#menu-items-container').contains('Drivers').click()
+    cy.url().should('include', '/drivers')
+
+    cy.get('#menu-items-container').contains('Constructors').click()
+    cy.url().should('include', '/constructors')
+
+    cy.get('#menu-items-container').contains('Circuits').click()
+    cy.url().should('include', '/circuits')
+
+    cy.get('#menu-items-container')
+      .contains('Home').click()
+
+  })
+})
+
+
     //Driver-test
   describe('Navigate from home page to driver page, change driver and navigate away and back again', () => {
     it('clicks the link "drivers" in the menu and then picks Mika häkkinen before returning to homepage', () => {
