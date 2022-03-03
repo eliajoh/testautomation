@@ -18,6 +18,7 @@
     })
   })
 
+
     //Driver-test 2
   describe('Change driver, then year on the driver-graph', () => {
     it('changes the driver to Schumacher, then changes the year on the graph to 2000', () => {
@@ -36,6 +37,7 @@
     })
   })
 
+
   //Driver-test 3
   describe('Filter driver-result after year', () => {
     it('filters the table after year 2008', () => {
@@ -50,9 +52,10 @@
     })
   })
 
+
   //Driver-test 4
-  describe('Filter driver-result after year where driver did not compete', () => {
-    it('clicks the link "drivers"', () => {
+  describe('Filter driver-result after track and position', () => {
+    it('clicks the link "drivers", changes the filters', () => {
       cy.visit('/drivers')
       cy.url().should('include', '/drivers')
       
@@ -60,7 +63,6 @@
         .type('Monaco{enter}')
       cy.get('.column-0')
         .should('contain', 'Monaco')
-      //every filter split into multiple tests, then one test which tests all the functions
       cy.get('.column-2 > input').click()
         .type('1{enter}')
       cy.get('.column-2')
@@ -68,6 +70,7 @@
       
     })
   })
+
 
     //Constructor-test 1
   describe('Change year of constructors and removes as many teams as possible', () => {
@@ -83,32 +86,36 @@
 
       cy.get('g.traces:nth-child(2) > rect:nth-child(3)').click()
       
-
     })
   })
 
-  
-    //Seasons-tests
+
+  //Seasons-test 2
   describe('Navigate from home page to Seasons page', () => {
     it('clicks the link "seasons", changes year to 1977, removes last entry, adds new entry', () => {
       cy.visit('https://formula1stats.herokuapp.com')
       
       cy.get('#menu-items-container').contains('Seasons').click()
       cy.url().should('include', '/seasons')
-
+  
       cy.get('#react-select-2--value > .Select-value').click()
         .type('1977{enter}')
       cy.get('#react-select-2--value > .Select-value')
         .should('contain', '1977')
-      cy.wait(4000)
-      cy.get(':nth-child(6) > .Select-value-icon').click()
       cy.get('#react-select-3--value')
-        .type('Gunnar Nilsson{enter}')
-
+        .contains(
+            'Lauda',
+            {timeout: 10000}
+        )
+        .then(() => {
+          cy.get(':nth-child(6) > .Select-value-icon').click()
+          cy.get('#react-select-3--value')
+            .type('Gunnar Nilsson{enter}')
+      })   
     })
   })
 
-  
+
   //Seasons-test 2
   describe('Change season to edgecases', () => {
     it('changes season to edgecases 1950 and 2020', () => {
