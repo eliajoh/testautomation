@@ -150,15 +150,30 @@ describe('Navigate from home page to all the other pages to check basic function
         .type('1950{enter}')
       cy.get('#react-select-2--value > .Select-value')
         .should('contain', '1950')
-        cy.get('#react-select-3--value')
+      cy.get('#react-select-3--value')
         .contains(
             'Farina',
             {timeout: 10000}
         )
         .then(() => {
           cy.get('#react-select-2--value > .Select-value').click()
-          .type('2020{enter}')
+            .type('2020{enter}')
           cy.get('#react-select-2--value > .Select-value').should('contain', '2020')
       })   
+    })
+  })
+
+
+  //Circuit-test
+
+  describe('change the circuit', () => {
+    it('changes circuit by typing in Monza', () => {
+      cy.visit('/circuits')
+      cy.url().should('include', '/circuits')
+      cy.get('.Select-value').click()
+        .type('Monza{enter}')
+      cy.get('.Select-value')
+        .should('contain', 'Monza')
+ 
     })
   })
