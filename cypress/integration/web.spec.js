@@ -1,6 +1,13 @@
 
-//Basic Functionality/smoketest
-describe('Navigate from home page to all the other pages to check basic functionality', () => {
+describe('Smoketest to see that connection works', () => {
+  it('visits the main page of formula1stats', () => {
+    cy.visit('https://formula1stats.herokuapp.com/')
+    
+  })
+})
+
+
+describe('Basic Functionality/Navigation test', () => {
   it('clicks the different linked items in the menu and navigates to all the options', () => {
     cy.visit('https://formula1stats.herokuapp.com/')
     
@@ -23,8 +30,7 @@ describe('Navigate from home page to all the other pages to check basic function
 })
 
 
-    //Driver-test
-  describe('Navigate from home page to driver page, change driver and navigate away and back again', () => {
+  describe('Drivertest 1', () => {
     it('clicks the link "drivers" in the menu and then picks Mika häkkinen before returning to homepage', () => {
       cy.visit('https://formula1stats.herokuapp.com/')
       
@@ -43,8 +49,7 @@ describe('Navigate from home page to all the other pages to check basic function
   })
 
 
-    //Driver-test 2
-  describe('Change driver, then year on the driver-graph', () => {
+  describe('Driver-test 2', () => {
     it('changes the driver to Schumacher, then changes the year on the graph to 2000', () => {
       cy.visit('/drivers')
       
@@ -57,13 +62,11 @@ describe('Navigate from home page to all the other pages to check basic function
       cy.get('#year-dropdown-2')
         .should('contain', '2000')
 
-
     })
   })
 
 
-  //Driver-test 3
-  describe('Filter driver-result after year', () => {
+  describe('Driver-test 3', () => {
     it('filters the table after year 2008', () => {
       cy.visit('/drivers')
       cy.url().should('include', '/drivers')
@@ -77,8 +80,7 @@ describe('Navigate from home page to all the other pages to check basic function
   })
 
 
-  //Driver-test 4
-  describe('Filter driver-result after track and position', () => {
+  describe('Driver-test 4', () => {
     it('clicks the link "drivers", changes the filters', () => {
       cy.visit('/drivers')
       cy.url().should('include', '/drivers')
@@ -96,8 +98,7 @@ describe('Navigate from home page to all the other pages to check basic function
   })
 
 
-    //Constructor-test 1
-  describe('Change year of constructors and removes as many teams as possible', () => {
+  describe('Constructor-test 1', () => {
     it('changes the competition-season, removes all teams, changes season again', () => {
       cy.visit('/constructors')
       cy.url().should('include', '/constructors')
@@ -114,8 +115,7 @@ describe('Navigate from home page to all the other pages to check basic function
   })
 
 
-  //Seasons-test 2
-  describe('Navigate from home page to Seasons page', () => {
+  describe('Seasons-test 1', () => {
     it('clicks the link "seasons", changes year to 1977, removes last entry, adds new entry', () => {
       cy.visit('https://formula1stats.herokuapp.com')
       
@@ -140,8 +140,7 @@ describe('Navigate from home page to all the other pages to check basic function
   })
 
 
-  //Seasons-test 2
-  describe('Change season to edgecases', () => {
+  describe('Seasons-test 2', () => {
     it('changes season to edgecases 1950 and 2020', () => {
       cy.visit('/seasons')
       cy.url().should('include', '/seasons')
@@ -164,9 +163,7 @@ describe('Navigate from home page to all the other pages to check basic function
   })
 
 
-  //Circuit-test
-
-  describe('change the circuit', () => {
+  describe('Circuit-test', () => {
     it('changes circuit by typing in Monza', () => {
       cy.visit('/circuits')
       cy.url().should('include', '/circuits')
