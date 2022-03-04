@@ -53,12 +53,12 @@ describe('Basic Functionality/Navigation test', () => {
     it('changes the driver to Schumacher, then changes the year on the graph to 2000', () => {
       cy.visit('/drivers')
       
-      cy.get('#react-select-2--value-item').click()
+      cy.get('#react-select-2--value-item')
         .type('Schumacher{enter}')
       cy.get('#react-select-2--value-item').should('contain', 'Schumacher')
 
-      cy.get('#year-dropdown-2').click()
-        .type('2000{enter}')
+      cy.get('#year-dropdown-2')
+        .type('2000{enter}', {delay:70})
       cy.get('#year-dropdown-2')
         .should('contain', '2000')
 
